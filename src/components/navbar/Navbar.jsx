@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed left-0 top-0 w-full z-10">
+    <header className="fixed left-0 top-0 w-full z-10 bg-slate-200">
       <div className="flex justify-between items-center px-10 py-7">
         <Link href="/">
           <h1 className="text-lg text-cyan-700 font-semibold">
@@ -28,10 +28,10 @@ export default function Navbar() {
               <Link href="/#location">Location</Link>
             </li>
             <li>
-              <Link href="/gallery">Gallery</Link>
+              <Link href="/#gallery">Gallery</Link>
             </li>
             <li>
-              <Link href="/contact">Contact Us</Link>
+              <Link href="/#contact">Contact Us</Link>
             </li>
           </ul>
         </nav>
