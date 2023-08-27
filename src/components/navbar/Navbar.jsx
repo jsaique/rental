@@ -1,24 +1,68 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+
 export default function Navbar() {
+  const [nav, setNav] = useState(false);
+
+  const navHandler = () => {
+    setNav(!nav);
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full shadow-sm">
-      <div className="container mx-auto px-6 py-5 flex justify-between items-center">
-        <h1 className="text-lg font-semibold">FL Keys Rental</h1>
+    <header className="fixed left-0 top-0 w-full z-10">
+      <div className="flex justify-between items-center px-10 py-7">
+        <Link href="/">
+          <h1 className="text-lg text-cyan-700 font-semibold">
+            FL Keys Rental
+          </h1>
+        </Link>
         <nav>
-          <ul className="flex gap-12">
+          <ul className="hidden lg:flex gap-12 text-sm [&_a]:text-cyan-700">
             <li>
-              <a href="#">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li>
-              <a href="#">Location</a>
+              <Link href="/#location">Location</Link>
             </li>
             <li>
-              <a href="#">Gallery</a>
+              <Link href="/gallery">Gallery</Link>
             </li>
             <li>
-              <a href="#">Contact Us</a>
+              <Link href="/contact">Contact Us</Link>
             </li>
           </ul>
         </nav>
+        {/* Mobile */}
+        <div onClick={navHandler} className="block lg:hidden z-10">
+          {/* If nav is true set to close false display the hamburger */}
+          {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+        </div>
+        {/* Mobile drawer */}
+        <div
+          className={
+            nav
+              ? "lg:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen [&_a]:text-cyan-700 text-center ease-in duration-300 bg-slate-300"
+              : "lg:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen [&_a]:text-cyan-700 text-center ease-in duration-300 bg-slate-300"
+          }
+        >
+          <ul className="[&_a]:text-cyan-700 [&_a]:text-2xl [&_li]:p-2">
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/#location">Location</Link>
+            </li>
+            <li>
+              <Link href="/#gallery">Gallery</Link>
+            </li>
+            <li>
+              <Link href="/#contact">Contact Us</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
   );
