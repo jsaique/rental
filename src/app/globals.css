@@ -11,3 +11,7 @@ body {
   color: #1c1917;
   background: #e2e8f0;
 }
+
+.hero-img {
+  background-image: url(../assets/images/hero.jpg);
+}
