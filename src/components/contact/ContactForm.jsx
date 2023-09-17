@@ -25,14 +25,21 @@ export default function ContactForm() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm("service_id", "template_id", form.current, "API_ID").then(
-      (result) => {
-        console.log(result.text);
-      },
-      (error) => {
-        console.log(error.text);
-      }
-    );
+    emailjs
+      .sendForm(
+        process.env.EMAILJS_SERVICE_ID,
+        process.env.EMAILJS_TEMPLATE_ID,
+        form.current,
+        process.env.EMAILJS_PUBLIC_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   // End of emailJS
 
