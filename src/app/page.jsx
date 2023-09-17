@@ -5,6 +5,7 @@ import Gallery from "@/components/gallery/Gallery";
 import Location from "@/components/location/Location";
 import Hero from "@/components/hero/Hero";
 import ContactForm from "@/components/contact/contactForm";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
       <Carousel slides={CarouselData} />
       {/* <Gallery /> */}
       <ContactForm />
+      <Footer />
     </main>
   );
 }

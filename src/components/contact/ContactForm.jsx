@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const [username, setUsername] = useState("");
@@ -17,6 +18,23 @@ export default function ContactForm() {
       .toLocaleLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
   };
+
+  // Form and EmailJS
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm("service_id", "template_id", form.current, "API_ID").then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+  };
+  // End of emailJS
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -49,7 +67,7 @@ export default function ContactForm() {
       <h1 className="text-2xl font-bold text-center p-4">
         Interested on renting?
       </h1>
-      <form className="max-w-[600px] m-auto ">
+      <form ref={form} onSubmit={sendEmail} className="max-w-[600px] m-auto ">
         {errMsg && (
           <p className="py-3 text-center text-red-600 text-base tracking-wide animate-bounce">
             *{errMsg}
@@ -67,6 +85,7 @@ export default function ContactForm() {
             className="border shadow-lg p-3 focus-visible:outline-cyan-700"
             type="text"
             placeholder="Name"
+            name="name"
           />
           <input
             onChange={(e) => setPhoneNumber(e.target.value)}
@@ -74,6 +93,7 @@ export default function ContactForm() {
             className="border shadow-lg p-3 focus-visible:outline-cyan-700"
             type="text"
             placeholder="Phone Number"
+            name="phone"
           />
         </div>
         <input
@@ -82,6 +102,7 @@ export default function ContactForm() {
           className="border shadow-lg p-3 w-full my-4 focus-visible:outline-cyan-700"
           type="email"
           placeholder="Email"
+          name="email"
         />
         <input
           onChange={(e) => setSubject(e.target.value)}
@@ -89,6 +110,7 @@ export default function ContactForm() {
           className="border shadow-lg p-3 w-full mb-4 focus-visible:outline-cyan-700"
           type="text"
           placeholder="Subject"
+          name="subject"
         />
         <textarea
           onChange={(e) => setMessage(e.target.value)}
@@ -97,8 +119,10 @@ export default function ContactForm() {
           cols="30"
           rows="10"
           placeholder="Message"
+          name="message"
         ></textarea>
         <button
+          type="submit"
           onClick={handleSend}
           className="border bg-cyan-700 text-slate-200 shadow-lg p-3 w-full mt-2 mb-3"
         >
