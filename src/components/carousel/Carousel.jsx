@@ -35,7 +35,10 @@ export default function Carousel({ slides }) {
   }
 
   return (
-    <section className="max-w-[1240px] mx-auto text-center mb-20" id="gallery">
+    <section
+      className="max-w-[1240px] mx-auto text-center mb-20 scroll-mt-28"
+      id="gallery"
+    >
       <p className="text-2xl font-bold pb-4">Gallery</p>
       <div className="relative flex justify-center p-4">
         <div>

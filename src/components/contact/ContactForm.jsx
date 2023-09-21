@@ -70,7 +70,10 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="max-w-[1240px] m-auto p-4 h-screen" id="contact">
+    <section
+      className="max-w-[1240px] m-auto p-4 h-screen scroll-mt-28"
+      id="contact"
+    >
       <h1 className="text-2xl font-bold text-center p-4">
         Interested on renting?
       </h1>

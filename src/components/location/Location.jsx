@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export default function Location({ address, phone, link }) {
   return (
-    <section className="max-w-[1240px] mx-auto text-center mb-20" id="location">
+    <section
+      className="max-w-[1240px] mx-auto text-center mb-20 scroll-mt-28"
+      id="location"
+    >
       <p className="text-2xl font-bold pb-4">Location</p>
       <div className="flex justify-evenly flex-col gap-4 lg:flex-row p-4">
         <div>

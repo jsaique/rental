@@ -45,7 +45,7 @@ export default function Navbar() {
             className="hidden lg:flex gap-12 text-sm "
           >
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/#home">Home</Link>
             </li>
             <li>
               <Link href="/#location">Location</Link>
